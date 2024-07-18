@@ -1,6 +1,5 @@
 import time
 import requests
-from datetime import datetime, timedelta
 import re
 
 # Function to read account data from data.txt
@@ -43,15 +42,6 @@ def spin_lottery(auth_data, spins):
             print(f"Spin failed for {extract_username(auth_data)}")
         time.sleep(1)  # 1 second delay between spins
 
-# Function to handle the countdown timer
-def countdown_timer(seconds):
-    end_time = datetime.now() + timedelta(seconds=seconds)
-    while datetime.now() < end_time:
-        remaining_time = end_time - datetime.now()
-        print(f"\rTime remaining: {remaining_time}", end="")
-        time.sleep(1)
-    print()
-
 # Main function to execute the spin task
 def main():
     account_data = read_account_data()
@@ -59,7 +49,7 @@ def main():
 
     print(f"Total accounts: {total_accounts}")
 
-    user_choice = input("Single account or all accounts? (single/all): ").strip().lower()
+    user_choice = input("Do you want to run the task for a single account or all accounts? (single/all): ").strip().lower()
     spins = int(input("Enter the number of spins: "))
 
     if user_choice == 'single':
@@ -85,10 +75,7 @@ def main():
     else:
         print("Invalid choice! Please enter 'single' or 'all'.")
 
-    print("All accounts processed. Starting 1-hour countdown...")
-    countdown_timer(3600)
-    print("Restarting script...")
-    main()  # Restart the script after 1 hour
+    print("All accounts processed. Task completed.")
 
 if __name__ == "__main__":
     main()
