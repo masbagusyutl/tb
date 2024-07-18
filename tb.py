@@ -59,7 +59,7 @@ def main():
 
     print(f"Total accounts: {total_accounts}")
 
-    user_choice = input("Do you want to run the task for a single account or all accounts? (single/all): ").strip().lower()
+    user_choice = input("Single account or all accounts? (single/all): ").strip().lower()
     spins = int(input("Enter the number of spins: "))
 
     if user_choice == 'single':
